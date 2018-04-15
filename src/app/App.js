@@ -1,23 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppRegistry } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { HomeScreen } from './screens/HomeScreen/components/HomeScreen';
+import { PhilipsHueScreen } from './screens/PhilipsHueScreen/components/PhilipsHueScreen';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+export const App = StackNavigator({
+    Home: { screen: HomeScreen },
+    PhilipsHue: { screen: PhilipsHueScreen }
+}, {
+    initialRouteName: 'Home',
+    mode: 'modal'
 });
+
+AppRegistry.registerComponent('main', () => App);

@@ -1,6 +1,8 @@
 {
   "expo": {
+    "name": "universal-remote",
+    "slug": "universal-remote",
     "sdkVersion": "26.0.0",
-    "entryPoint": "src/App.js"
+    "entryPoint": "src/app/App.js"
   }
 }
