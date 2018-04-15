@@ -1,5 +1,6 @@
 {
   "expo": {
-    "sdkVersion": "26.0.0"
+    "sdkVersion": "26.0.0",
+    "entryPoint": "src/App.js"
   }
 }
