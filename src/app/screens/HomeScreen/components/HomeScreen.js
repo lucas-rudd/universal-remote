@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native';
 import { HOME_SCREEN } from '../../../config/Constants';
 
-export class HomeScreen extends React.Component {
+export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Welcome',
     };

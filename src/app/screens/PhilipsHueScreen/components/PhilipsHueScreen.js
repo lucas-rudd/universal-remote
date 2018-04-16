@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native';
 import { PHILIPS_HUE_SCREEN } from '../../../config/Constants';
 
-export class PhilipsHueScreen extends React.Component {
+export default class PhilipsHueScreen extends React.Component {
     static navigationOptions = {
         title: 'Philips Hue',
     };
