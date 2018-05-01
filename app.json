@@ -1,12 +1,12 @@
 {
   "_comment": {
     "//": "The 'name' key should override expo's expected default component name.",
-    "//": "Because this option is not working, I am forced to registery my component as 'main.'"
+    "//": "Because this option is not working, I am forced to register my component as 'main.'"
   },
   "expo": {
     "name": "universal-remote",
     "slug": "universal-remote",
     "sdkVersion": "26.0.0",
-    "entryPoint": "src/app/App.js"
+    "entryPoint": "src/index.js"
   }
 }

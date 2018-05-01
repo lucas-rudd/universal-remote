@@ -1,10 +1,11 @@
-import { AppRegistry } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import React from 'react';
+import { StackNavigator, addNavigationHelpers } from 'react-navigation';
+import { connect } from 'react-redux';
 import HomeScreen from './screens/HomeScreen/components/HomeScreen';
 import PhilipsHueScreen from './screens/PhilipsHueScreen/components/PhilipsHueScreen';
 import AddLightScreen from './screens/AddLightScreen/components/AddLightScreen';
 
-const App = StackNavigator({
+export const AppNavigator = StackNavigator({
     Home: { screen: HomeScreen },
     PhilipsHue: { screen: PhilipsHueScreen },
     AddLight: { screen: AddLightScreen },
@@ -13,6 +14,13 @@ const App = StackNavigator({
     mode: 'modal',
 });
 
-AppRegistry.registerComponent('main', () => App);
+const AppWithNavigationState = ({ dispatch, nav }) => (
+    <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+);
 
-export default App;
+const mapStateToProps = state => ({
+    nav: state.nav,
+});
+
+export default connect(mapStateToProps)(AppWithNavigationState);
+

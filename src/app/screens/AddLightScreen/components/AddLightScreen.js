@@ -1,14 +1,30 @@
 import React from 'react';
-import { View } from 'react-native';
-import NavigationButton from '../../../common/NavigationButton';
+import { View, Button, Text } from 'react-native';
+import { connect } from 'react-redux';
+import NavigationButton from '../../../common/components/NavigationButton';
 import { ADD_LIGHT_SCREEN } from '../../../config/Constants';
+import { API_CALL_REQUEST } from '../../../config/ActionTypes';
 
-export default class PhilipsHueScreen extends React.Component {
+const mapDispatchToProps = dispatch => ({
+    onRequestIp: () => dispatch({ type: API_CALL_REQUEST }),
+});
+
+const mapStateToProps = state => ({
+    fetching: state.fetching,
+    dog: state.dog,
+    error: state.error,
+}
+);
+
+class PhilipsHueScreen extends React.Component {
     static navigationOptions = {
         title: 'Add Light',
     };
     render() {
         this.props.from = ADD_LIGHT_SCREEN;
+        const {
+            fetching, ip, onRequestIp, error,
+        } = this.props;
         return (
             <View style={{
                 flex: 1,
@@ -21,13 +37,24 @@ export default class PhilipsHueScreen extends React.Component {
                     title="Home"
                     to="Home"
                 />
-                <NavigationButton
-                    {...this.props}
-                    title="Confirm"
-                    to="PhilipsHue"
-                />
+                { ip ? (
+                    <Text>{ip}</Text>
+                ) : (
+                    <Text>No internal ip available</Text>
+                )}
+                { fetching ? (
+                    <Text>Fetching...</Text>
+                ) :
+                    (
+                        <Button
+                            title="Get Ip"
+                            onPress={onRequestIp}
+                        />
+                    )}
 
             </View>
         );
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhilipsHueScreen);
