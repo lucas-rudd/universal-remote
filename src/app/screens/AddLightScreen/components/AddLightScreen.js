@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
     fetching: state.fetching,
-    dog: state.dog,
+    ip: state.ip,
     error: state.error,
 }
 );
