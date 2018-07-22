@@ -7,7 +7,7 @@ import { PHILIPS_HUE_API } from '../../config/Constants';
 function fetchIp() {
     return axios({
         method: 'get',
-        url: PHILIPS_HUE_API.upnp,
+        url: PHILIPS_HUE_API.nupnp,
     });
 }
 

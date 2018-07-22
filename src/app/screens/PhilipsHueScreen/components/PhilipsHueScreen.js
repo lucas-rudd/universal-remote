@@ -9,7 +9,6 @@ export default class PhilipsHueScreen extends React.Component {
         title: 'Philips Hue',
     };
     render() {
-        this.props.from = PHILIPS_HUE_SCREEN;
         return (
             <View style={{
                 flex: 1,
@@ -21,6 +20,7 @@ export default class PhilipsHueScreen extends React.Component {
                     {...this.props}
                     title="Home"
                     to="Home"
+                    from={PHILIPS_HUE_SCREEN}
                 />
 
                 <AddLightButton

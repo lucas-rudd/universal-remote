@@ -7,12 +7,12 @@ export default class HomeScreen extends React.Component {
         title: 'Welcome',
     };
     render() {
-        this.props.from = HOME_SCREEN;
         return (
             <NavigationButton
                 {...this.props}
                 title="Philips Hue"
                 to="PhilipsHue"
+                from={HOME_SCREEN}
             />
         );
     }

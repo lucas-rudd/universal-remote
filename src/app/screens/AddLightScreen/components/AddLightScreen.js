@@ -21,7 +21,6 @@ class PhilipsHueScreen extends React.Component {
         title: 'Add Light',
     };
     render() {
-        this.props.from = ADD_LIGHT_SCREEN;
         const {
             fetching, ip, onRequestIp, error,
         } = this.props;
@@ -36,6 +35,7 @@ class PhilipsHueScreen extends React.Component {
                     {...this.props}
                     title="Home"
                     to="Home"
+                    from={ADD_LIGHT_SCREEN}
                 />
                 { ip ? (
                     <Text>{ip}</Text>
