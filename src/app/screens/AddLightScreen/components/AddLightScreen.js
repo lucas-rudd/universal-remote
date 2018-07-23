@@ -5,24 +5,13 @@ import NavigationButton from '../../../common/components/NavigationButton';
 import { ADD_LIGHT_SCREEN } from '../../../config/Constants';
 import { API_CALL_REQUEST } from '../../../config/ActionTypes';
 
-const mapDispatchToProps = dispatch => ({
-    onRequestIp: () => dispatch({ type: API_CALL_REQUEST }),
-});
-
-const mapStateToProps = state => ({
-    fetching: state.fetching,
-    ip: state.ip,
-    error: state.error,
-}
-);
-
-class PhilipsHueScreen extends React.Component {
+class AddLightScreen extends React.Component {
     static navigationOptions = {
         title: 'Add Light',
     };
     render() {
         const {
-            fetching, ip, onRequestIp, error,
+            fetching, internalipaddress, id, onRequestIp, error,
         } = this.props;
         return (
             <View style={{
@@ -37,8 +26,8 @@ class PhilipsHueScreen extends React.Component {
                     to="Home"
                     from={ADD_LIGHT_SCREEN}
                 />
-                { ip ? (
-                    <Text>{ip}</Text>
+                { internalipaddress ? (
+                    <Text>{internalipaddress} {id}</Text>
                 ) : (
                     <Text>No internal ip available</Text>
                 )}
@@ -57,4 +46,19 @@ class PhilipsHueScreen extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PhilipsHueScreen);
+function mapDispatchToProps(dispatch) {
+    return {
+        onRequestIp: () => dispatch({ type: API_CALL_REQUEST }),
+    };
+}
+
+function mapStateToProps(state) {
+    const {
+        fetching, internalipaddress, id, error,
+    } = state.addLightReducer;
+    return {
+        fetching, internalipaddress, id, error,
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddLightScreen);

@@ -15,7 +15,7 @@ function fetchIp() {
 function* workerSaga() {
     try {
         const response = yield call(fetchIp);
-        const { internalipaddress, id } = response.data;
+        const { internalipaddress, id } = response.data[0];
 
         // dispatch a success action to the store with the new dog
         yield put({ type: API_CALL_SUCCESS, internalipaddress, id });

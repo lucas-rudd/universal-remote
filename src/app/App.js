@@ -19,7 +19,6 @@ const store = createStore(
 
 sagaMiddleware.run(watcherSaga);
 
-
 const AppNavigator = StackNavigator({
     Home: { screen: HomeScreen },
     PhilipsHue: { screen: PhilipsHueScreen },
@@ -29,12 +28,15 @@ const AppNavigator = StackNavigator({
     mode: 'modal',
 });
 
-const App = () =>
-    (
-        <Provider store={store}>
-            <AppNavigator />
-        </Provider>
-    );
+class App extends React.Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <AppNavigator />
+            </Provider>
+        );
+    }
+}
 
 AppRegistry.registerComponent('main', () => App);
 

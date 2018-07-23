@@ -2,7 +2,8 @@ import { API_CALL_SUCCESS, API_CALL_REQUEST, API_CALL_FAILURE } from '../../conf
 
 const initialState = {
     fetching: false,
-    ip: null,
+    internalipaddress: null,
+    id: null,
     error: null,
 };
 
@@ -11,10 +12,16 @@ export default function addLightReducer(state = initialState, action) {
         case API_CALL_REQUEST:
             return { ...state, fetching: true, error: null };
         case API_CALL_SUCCESS:
-            return { ...state, fetching: false, ip: action.internalipaddress };
+            return {
+                ...state,
+                fetching: false,
+                internalipaddress: action.internalipaddress,
+                id: action.id,
+                error: null,
+            };
         case API_CALL_FAILURE:
             return {
-                ...state, fetching: false, ip: null, error: action.error,
+                ...state, fetching: false, error: action.error,
             };
         default:
             return state;
