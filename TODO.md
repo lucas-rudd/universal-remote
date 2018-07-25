@@ -13,6 +13,8 @@
 
 [ ] Control a light through the app (dim, change color, etc)
 
+[ ] Separate components into containers (smart components) vs pure-components (stateless)
+
 ### Maintenance
  [ ] Unit tests
 
